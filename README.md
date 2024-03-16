@@ -2,6 +2,6 @@
 
 ## How to Use:
 
-To begin download the Kitchen with the commands:
+To begin download the Kitchen with the command:
 
-> **CODE: ** git clone -b main --depth=1 https://github.com/Samsung-Galaxy-A21s/CRB-Linux && cd CRB-Linux
+	$ git clone -b main --depth=1 https://github.com/Samsung-Galaxy-A21s/CRB-Linux && cd CRB-Linux
