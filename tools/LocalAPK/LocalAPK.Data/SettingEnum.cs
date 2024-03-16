@@ -1,0 +1,33 @@
+﻿namespace LocalAPK.Data
+{
+    public enum SettingEnum
+    {
+        MassRenameString,
+        StartupRefresh,
+        AutoFetchGooglePlay,
+        GroupResults,
+        SubdirGroup,
+        RefreshDays,
+        WindowLocX,
+        WindowLocY,
+        WindowSizeWidth,
+        WindowSizeHeight,
+        WindowMaximized,
+        WindowMinimized,
+        LicenceEmail,
+        LicenceCode,
+        ExportDelimiter,
+        ExportFilename,
+        BottomPanelHeight,
+        ColumnWidthFilename,
+        ColumnWidthPackage,
+        ColumnWidthInternalname,
+        ColumnWidthGoogleplayname,
+        ColumnWidthCategory,
+        ColumnWidthLocalversion,
+        ColumnWidthLatestversion,
+        ColumnWidthPrice,
+        ColumnWidthGoogleplayfetch,
+        ColumnSortIndex
+    }
+}
