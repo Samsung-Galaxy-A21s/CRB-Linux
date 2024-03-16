@@ -42,6 +42,41 @@ if [ -e "$super_img_path/super.img" ]; then
     echo "Extracting odm image..."
     ./../../../tools/super_to_raw/lpunpack --partition=odm super.img.raw
     echo ""
+
+    cd ..
+    mkdir -p ./Build/system/
+    mkdir -p ./Build/product/
+    mkdir -p ./Build/vendor/
+    mkdir -p ./Build/odm/
+
+    mkdir -p ./Build/.tmp_system/
+    mkdir -p ./Build/.tmp_product/
+    mkdir -p ./Build/.tmp_vendor/
+    mkdir -p ./Build/.tmp_odm/
+
+
+    echo "Extracting system filesystem..."
+    sudo mount -t ext4 -o loop Input/system.img Build/.tmp_system/
+    sudo mv Build/.tmp_system/* Build/system/
+    sudo umount Build/.tmp_system/
+    sudo rm -rf Build/.tmp_system/
+    echo "Extracting product filesystem..."
+    sudo mount -t ext4 -o loop Input/product.img Build/.tmp_product/
+    sudo mv Build/.tmp_product/* Build/product/
+    sudo umount Build/.tmp_product/
+    sudo rm -rf Build/.tmp_product/
+    echo "Extracting vendor filesystem..."
+    sudo mount -t ext4 -o loop Input/vendor.img Build/.tmp_vendor/
+    sudo mv Build/.tmp_vendor/* Build/vendor/
+    sudo umount Build/.tmp_vendor/
+    sudo rm -rf Build/.tmp_vendor/
+    echo "Extracting odm filesystem..."
+    sudo mount -t ext4 -o loop Input/odm.img Build/.tmp_odm/
+    sudo mv Build/.tmp_odm/* Build/odm/
+    sudo umount Build/.tmp_odm/
+    sudo rm -rf Build/.tmp_odm/
+
+    echo ""
     echo "Done!"
 else
     echo "Incorrect path specified!"
