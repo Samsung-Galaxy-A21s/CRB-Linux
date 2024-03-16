@@ -1,4 +1,7 @@
-## CRB Kitchen for Linux
+# **CRB Kitchen for Linux**
 
-# How to Use:
+## How to Use:
 
+To begin download the Kitchen with the commands:
+
+> **CODE: ** git clone -b main --depth=1 https://github.com/Samsung-Galaxy-A21s/CRB-Linux && cd CRB-Linux
