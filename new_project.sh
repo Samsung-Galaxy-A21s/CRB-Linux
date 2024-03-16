@@ -13,7 +13,7 @@ if [[ $project_confirm == [yY] || $project_confirm == [yY][eE][sS] || -z "$proje
     if [ -e "./Projects" ]; then
          mkdir -p ./Projects/$project_name
          mkdir -p ./Projects/$project_name/Input
-         mkdir -p ./Projects/$project_name/ROM
+         mkdir -p ./Projects/$project_name/Output
          mkdir -p ./Projects/$project_name/Build
     fi
 

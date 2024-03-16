@@ -12,8 +12,11 @@ fi
 echo "*WARNING* This script will delete all data in the 'Projects' folder!"
 read -p "Are you sure you want to continue? (Y) [Y/N]: " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+    echo ""
     echo "Removing Projects folder..."
-    rm -rf ./Projects/*
+    sudo rm -rf ./Projects/*
+    echo ""
+    echo "Done!"
 else
     echo ""
     echo "Cleanup Aborted!"
