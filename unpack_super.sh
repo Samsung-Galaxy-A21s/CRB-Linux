@@ -57,22 +57,22 @@ if [ -e "$super_img_path/super.img" ]; then
 
     echo "Extracting system filesystem..."
     sudo mount -t ext4 -o loop Input/system.img Build/.tmp_system/
-    sudo mv Build/.tmp_system/* Build/system/
+    sudo cp Build/.tmp_system/* Build/system/ -r
     sudo umount Build/.tmp_system/
     sudo rm -rf Build/.tmp_system/
     echo "Extracting product filesystem..."
     sudo mount -t ext4 -o loop Input/product.img Build/.tmp_product/
-    sudo mv Build/.tmp_product/* Build/product/
+    sudo cp Build/.tmp_product/* Build/product/ -r
     sudo umount Build/.tmp_product/
     sudo rm -rf Build/.tmp_product/
     echo "Extracting vendor filesystem..."
     sudo mount -t ext4 -o loop Input/vendor.img Build/.tmp_vendor/
-    sudo mv Build/.tmp_vendor/* Build/vendor/
+    sudo cp Build/.tmp_vendor/* Build/vendor/ -r
     sudo umount Build/.tmp_vendor/
     sudo rm -rf Build/.tmp_vendor/
     echo "Extracting odm filesystem..."
     sudo mount -t ext4 -o loop Input/odm.img Build/.tmp_odm/
-    sudo mv Build/.tmp_odm/* Build/odm/
+    sudo cp Build/.tmp_odm/* Build/odm/ -r
     sudo umount Build/.tmp_odm/
     sudo rm -rf Build/.tmp_odm/
 
