@@ -23,9 +23,19 @@ PINK='\033[38;5;206m'
 UNDERLINE='\033[4m'
 CURRENT_PROJECT=$(cat tools/project)
 
+if [ -e ./tools/checker ]; then
+    :
+else
+    echo "[Error 1] You are not in the correct directory!"
+    echo "Stopping program now!"
+    exit 0
+fi
+
 if [ ! -s "tools/project" ]; then
 	CURRENT_PROJECT="None"
 fi
+
+export PROJECT=$CURRENT_PROJECT
 
 PRINT()
 {
@@ -69,6 +79,9 @@ MAIN()
 			;;
 		3)
 			bash scripts/cleanup.sh
+			;;
+		4)
+			bash scripts/unpack_super.sh
 			;;
 		12)
 			echo "Exiting..."

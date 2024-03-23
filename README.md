@@ -1,4 +1,4 @@
-#** CRB Kitchen for Linux **
+# **CRB Kitchen for Linux**
 
 ## Prepare:
 
@@ -7,12 +7,19 @@ Update Dependencies:
     $ sudo apt update && sudo apt upgrade -y
     $ sudo apt install android-sdk-libsparse-utils -y
 
-Download latest release from the [Releases Page](https://github.com/Samsung-Galaxy-A21s/CRB-Linux/releases)
+Download The Kitchen:
 
-To Build CRB-Linux from Source:
+	$ git clone --depth=1 -b main https://github.com/Samsung-Galaxy-A21s/CRB-Linux
+	$ cd CRB-Linux
 
-	$ git clone -b main --depth=1 https://github.com/Samsung-Galaxy-A21s/CRB-Linux && cd CRB-Linux
+How To Use:
 
-Then to compile:
-	
-	$ make
+	$ ./start.sh
+
+- This will list all of the available options within CRB
+- It is recommended to first Create a New Project
+- Then select a project
+- Then Unpack/Repack the necessary Images
+
+Any Bugs or Questions send me a message [here](https://t.me/thomas_turner36)
+
