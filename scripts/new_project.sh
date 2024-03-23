@@ -4,7 +4,7 @@ read -p "Create a new Project? [Y] (Y/N): " project_confirm
 if [[ $project_confirm == [yY] || $project_confirm == [yY][eE][sS] || -z "$project_confirm" ]]; then
     read -p "Enter Project Name: " project_name
 
-    if [ -e "./Projects/$project_name" ]; then
+    if [ -e "./../Projects/$project_name" ]; then
         echo "   "
         echo "This name has already been taken please try again!"
         exit 0
