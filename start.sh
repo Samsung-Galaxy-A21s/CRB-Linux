@@ -83,6 +83,27 @@ MAIN()
 		4)
 			bash scripts/unpack_super.sh
 			;;
+		5)
+			bash scripts/unpack_boot.sh
+			;;
+		6)
+			bash scripts/repack_system.sh
+			;;
+		7)
+			bash scripts/repack_product.sh
+			;;
+		8)
+			bash scripts/repack_vendor.sh
+			;;
+		9)
+			bash scripts/repack_odm.sh
+			;;
+		10)
+			bash scripts/repack_super.sh
+			;;
+		11)
+			bash scripts/repack_boot.sh
+			;;
 		12)
 			echo "Exiting..."
 			exit
