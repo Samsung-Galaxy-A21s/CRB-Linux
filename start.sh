@@ -31,6 +31,8 @@ else
     exit 0
 fi
 
+git fetch && git pull
+
 if [ ! -s "tools/project" ]; then
 	CURRENT_PROJECT="None"
 fi
