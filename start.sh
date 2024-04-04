@@ -69,56 +69,56 @@ PRINT()
 
 MAIN()
 {
+	option=0
+	while [ "$option" -ne 12  ]; do
+		PRINT
 
-	read -p "Option: " option
+		read -p "Option: " option
 
-	case $option in
-		1)
-			bash scripts/new_project.sh
-			;;
-		2)
-			bash scripts/select_project.sh
-			;;
-		3)
-			bash scripts/cleanup.sh
-			;;
-		4)
-			bash scripts/unpack_super.sh
-			;;
-		5)
-			bash scripts/unpack_boot.sh
-			;;
-		6)
-			bash scripts/repack_system.sh
-			;;
-		7)
-			bash scripts/repack_product.sh
-			;;
-		8)
-			bash scripts/repack_vendor.sh
-			;;
-		9)
-			bash scripts/repack_odm.sh
-			;;
-		10)
-			bash scripts/repack_super.sh
-			;;
-		11)
-			bash scripts/repack_boot.sh
-			;;
-		12)
-			echo "Exiting..."
-			exit
-			;;
-		*)
-			echo "[Error 1] Invalid option!"
-			;;
+		case $option in
+			1)
+				bash scripts/new_project.sh
+				;;
+			2)
+				bash scripts/select_project.sh
+				;;
+			3)
+				bash scripts/cleanup.sh
+				;;
+			4)
+				bash scripts/unpack_super.sh
+				;;
+			5)
+				bash scripts/unpack_boot.sh
+				;;
+			6)
+				bash scripts/repack_system.sh
+				;;
+			7)
+				bash scripts/repack_product.sh
+				;;
+			8)
+				bash scripts/repack_vendor.sh
+				;;
+			9)
+				bash scripts/repack_odm.sh
+				;;
+			10)
+				bash scripts/repack_super.sh
+				;;
+			11)
+				bash scripts/repack_boot.sh
+				;;
+			12)
+				echo "Exiting..."
+				exit 0
+				;;
+			*)
+				echo "[Error 1] Invalid option!"
+				;;
 
-	esac
-
-
-
+		esac
+	done
 }
 
-PRINT
 MAIN
