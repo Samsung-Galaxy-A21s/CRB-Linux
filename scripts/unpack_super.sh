@@ -64,6 +64,7 @@ else
     echo "Incorrect path specified!"
     echo "Check a super.img is present in the directory!"
     echo "Check you didn't include a '/' at the end!"
+    echo "Check you didn't include '~' at the start!"
     exit 0
 fi
 

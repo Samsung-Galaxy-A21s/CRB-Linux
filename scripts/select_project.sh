@@ -7,10 +7,11 @@ CURRENT_PROJECT=$(cat tools/project)
 echo "Available Projects:"
 ls -d Projects/* | cut -d '/' -f 2
 
+read -p "Choice: " project_choice
 if [ -e "./Projects/$project_choice" ]; then
 	# Clear the current project and set the new one
 	> tools/project
 	echo "$project_choice" > tools/project
 fi
 
-sleep 1
+sleep 0.5

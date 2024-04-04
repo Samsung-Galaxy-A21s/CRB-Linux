@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # This script is used to create a new project in the Projects directory
+read -p "Enter Project Name: " project_name
 
 if [ -e "./Projects/$project_name" ]; then
     echo "   "
+    echo "[Error 1] $project_name already exists!"
     exit 0
 fi
 
@@ -15,8 +17,10 @@ mkdir -p ./Projects/$project_name/Build
 
 # Check the project was created successfully
 if [ -e "./Projects/$project_name" ]; then
-    echo "  "
     echo "New Project Created Successfully!"
+    echo "Automatically selecting new project..."
+    > tools/project
+    echo "$project_name" > tools/project
 else
     echo "  "
     # Ik this message is the last thing the user wants to see, but I DON'T CARE

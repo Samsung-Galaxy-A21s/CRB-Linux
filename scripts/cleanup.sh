@@ -9,17 +9,22 @@ BOLD='\033[1m'
 # List projects to delete from
 echo -e "${BOLD}Projects:${RESET}"
 ls -d Projects/* | grep -v "/$PROJECT" | cut -d '/' -f 2
-echo -e "${BOLD_GREEN}$PROJECT << Current Project${RESET}"
+if [ $PROJECT == "None" ]; then
+    :
+else
+    echo -e "${BOLD_GREEN}$PROJECT << Current Project${RESET}"
+fi
 echo -e "${BOLD_RED}ALL << Delete All Projects${RESET}"
 
 read -p "CHOICE: " choice
 
 if [ "$choice" == "ALL" ]; then
     echo "Deleting..."
-    rm -rf Projects/*
+    sudo rm -rf Projects/*
+    > tools/project
 else
     echo "Deleting..."
-    rm -rf "Projects/$choice"
+    sudo rm -rf "Projects/$choice"
 fi
 
 if [ $PROJECT == $choice ]; then
