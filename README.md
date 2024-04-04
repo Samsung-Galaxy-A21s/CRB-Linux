@@ -18,8 +18,10 @@ How To Use:
 
 - This will list all of the available options within CRB
 - It is recommended to first Create a New Project
-- Then select a project
-- Then Unpack/Repack the necessary Images
+- Then Unpack any images
+- Edit the data
+- Then Repack those images
 
 Any Bugs or Questions send me a message [here](https://t.me/thomas_turner36)
+Or post a message in the XDA Forums
 
