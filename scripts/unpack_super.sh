@@ -67,4 +67,4 @@ else
     exit 0
 fi
 
-echo ""
+sleep 2

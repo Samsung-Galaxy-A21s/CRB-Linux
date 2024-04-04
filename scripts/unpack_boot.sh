@@ -23,3 +23,4 @@ else
     exit 0
 fi
 
+sleep 1

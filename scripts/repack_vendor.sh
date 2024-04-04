@@ -11,3 +11,5 @@ sudo umount /media/vendor/
 
 echo "Check Projects/$PROJECT/Output for vendor.img"
 echo "Done!"
+
+sleep 0.5

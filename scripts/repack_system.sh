@@ -11,3 +11,5 @@ sudo umount /media/system/
 
 echo "Check Projects/$PROJECT/Output for system.img"
 echo "Done!"
+
+sleep 0.5

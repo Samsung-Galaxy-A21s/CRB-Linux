@@ -9,3 +9,4 @@ echo ""
 
 echo "Done!"
 
+sleep 0.5

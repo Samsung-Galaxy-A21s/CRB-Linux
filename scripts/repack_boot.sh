@@ -18,3 +18,4 @@ cp -f ./Projects/$PROJECT/Build/boot/image-new.img ./Projects/$PROJECT/Output/bo
 echo "Check Output folder for new boot.img"
 echo ""
 
+sleep 1

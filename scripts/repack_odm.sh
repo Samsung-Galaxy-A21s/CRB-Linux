@@ -11,3 +11,5 @@ sudo umount /media/odm/
 
 echo "Check Projects/$PROJECT/Output for odm.img"
 echo "Done!"
+
+sleep 0.5

@@ -11,3 +11,5 @@ sudo umount /media/product/
 
 echo "Check Projects/$PROJECT/Output for product.img"
 echo "Done!"
+
+sleep 0.5

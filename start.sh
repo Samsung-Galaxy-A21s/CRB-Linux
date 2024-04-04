@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# Very first thing is to check this script is being run from 
+# the correct directory. If not, then exit the script.
+if [ -e ./tools/checker ]; then
+    :
+else
+    echo "[Error 1] You are not in the correct directory!"
+    echo "Stopping program now!"
+    exit 0
+fi
+
+# Then we update the source if needed
+echo "Updating source if required..."
+git fetch && git pull > /dev/null 2>&1
+
+# Add formatting to the script
 BLACK='\033[0;30m'
 BOLD_BLACK='\033[1;30m'
 RED='\033[0;31m'
@@ -19,26 +34,18 @@ BOLD_WHITE='\033[1;37m'
 RESET='\033[0m' # Reset color
 BOLD='\033[1m'
 PINK='\033[38;5;206m'
-
 UNDERLINE='\033[4m'
+
+PROJECT()
+{
 CURRENT_PROJECT=$(cat tools/project)
-
-if [ -e ./tools/checker ]; then
-    :
-else
-    echo "[Error 1] You are not in the correct directory!"
-    echo "Stopping program now!"
-    exit 0
-fi
-
-git fetch && git pull
-
 if [ ! -s "tools/project" ]; then
 	CURRENT_PROJECT="None"
 fi
-
 export PROJECT=$CURRENT_PROJECT
+}
 
+# Print the menu
 PRINT()
 {
 	echo -e "                                                 ${BOLD_BLUE}${UNDERLINE}Welcome To CRB-Linux Kitchen - By RiskyGUY22${RESET}${RESET}"
@@ -69,11 +76,14 @@ PRINT()
 
 MAIN()
 {
+	# Set the option to 0
 	option=0
+	# Loop until the user exits
 	while [ "$option" -ne 12  ]; do
+		PROJECT
 		PRINT
 
-		read -p "Option: " option
+		read -p "OPTION: " option
 
 		case $option in
 			1)
@@ -121,4 +131,5 @@ MAIN()
 	done
 }
 
+# Call all of the code above
 MAIN
