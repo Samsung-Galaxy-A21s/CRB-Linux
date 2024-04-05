@@ -70,7 +70,9 @@ PRINT()
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-    echo -e "12) Exit this menu"
+	echo -e "12) Disable vbmeta"
+	echo -e "13) Debloater Tool"
+    echo -e "14) Exit this menu"
 	echo -e ""
 }
 
@@ -79,7 +81,7 @@ MAIN()
 	# Set the option to 0
 	option=0
 	# Loop until the user exits
-	while [ "$option" -ne 12  ]; do
+	while [ "$option" -ne 14  ]; do
 		PROJECT
 		PRINT
 
@@ -120,6 +122,12 @@ MAIN()
 				bash scripts/repack_boot.sh
 				;;
 			12)
+				bash scripts/disable_vbmeta.sh
+				;;
+			13)
+				bash scripts/debloat_tool.sh
+				;;
+			14)
 				echo "Exiting..."
 				exit 0
 				;;
