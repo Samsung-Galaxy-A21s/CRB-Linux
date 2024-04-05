@@ -1,11 +1,12 @@
 #!/bin/bash
 
-echo "Searching for boot.img..."
 if [ -e "./Projects/$PROJECT/Build/boot/boot.img" ]; then
 	echo "Boot.img Found!"
 else
 	echo "[Error 1] Boot.img was NOT Found!"
-	echo "Check you ran the unpack boot.img script first!"
+	echo "Check you have unpacked a boot image first!"
+	sleep 2
+	exit 0
 fi
 
 echo ""

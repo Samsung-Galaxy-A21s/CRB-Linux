@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [ -e "./Projects/$PROJECT/Build/system/" ]; then
+    echo "System folder detected!"
+else
+    echo "System folder NOT DETECTED!"
+    echo "Please unpack a super.img first!"
+    sleep 2
+    exit 0
+fi
+
 echo "Building System Image..."
 sudo rm -rf /media/system/
 sudo mkdir /media/system/
@@ -12,4 +21,4 @@ sudo umount /media/system/
 echo "Check Projects/$PROJECT/Output for system.img"
 echo "Done!"
 
-sleep 0.5
+sleep 1
