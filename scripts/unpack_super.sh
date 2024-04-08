@@ -21,16 +21,12 @@ if [ -e "$super_img_path/super.img" ]; then
     simg2img super.img super.img.raw
     echo "Extracting system image..."
     ./../../../tools/super_to_raw/lpunpack --partition=system super.img.raw
-    mv system.img system.img.raw
     echo "Extracting product image..."
     ./../../../tools/super_to_raw/lpunpack --partition=product super.img.raw
-    mv product.img product.img.raw
     echo "Extracting vendor image..."
     ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img.raw
-    mv vendor.img vendor.img.raw
     echo "Extracting odm image..."
     ./../../../tools/super_to_raw/lpunpack --partition=odm super.img.raw
-    mv odm.img odm.img.raw
     echo ""
 
 
@@ -47,22 +43,22 @@ if [ -e "$super_img_path/super.img" ]; then
 
 
     echo "Extracting system filesystem..."
-    sudo mount -t ext4 -o loop Input/system.img.raw Build/.tmp_system/
+    sudo mount -t ext4 -o loop Input/system.img Build/.tmp_system/
     sudo cp -f Build/.tmp_system/* Build/system/ -r
     sudo umount Build/.tmp_system/
     sudo rm -rf Build/.tmp_system/
     echo "Extracting product filesystem..."
-    sudo mount -t ext4 -o loop Input/product.img.raw Build/.tmp_product/
+    sudo mount -t ext4 -o loop Input/product.img Build/.tmp_product/
     sudo cp -f Build/.tmp_product/* Build/product/ -r
     sudo umount Build/.tmp_product/
     sudo rm -rf Build/.tmp_product/
     echo "Extracting vendor filesystem..."
-    sudo mount -t ext4 -o loop Input/vendor.img.raw Build/.tmp_vendor/
+    sudo mount -t ext4 -o loop Input/vendor.img Build/.tmp_vendor/
     sudo cp -f Build/.tmp_vendor/* Build/vendor/ -r
     sudo umount Build/.tmp_vendor/
     sudo rm -rf Build/.tmp_vendor/
     echo "Extracting odm filesystem..."
-    sudo mount -t ext4 -o loop Input/odm.img.raw Build/.tmp_odm/
+    sudo mount -t ext4 -o loop Input/odm.img Build/.tmp_odm/
     sudo cp -f Build/.tmp_odm/* Build/odm/ -r
     sudo umount Build/.tmp_odm/
     sudo rm -rf Build/.tmp_odm/

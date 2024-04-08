@@ -17,9 +17,9 @@ rm -rf ./Projects/$PROJECT/Output/super.img
 
 # Re define all of the calculated sizes
 SYSTEM_SIZE=$(sudo du -b ./Projects/$PROJECT/Build/system | tail -n 1 | awk '{print $1}')
-PRODUCT_SIZE=$(du -b ./Projects/$PROJECT/Input/product.img.raw | awk '{print $1}')
-VENDOR_SIZE=$(du -b ./Projects/$PROJECT/Input/vendor.img.raw | awk '{print $1}')
-ODM_SIZE=$(du -b ./Projects/$PROJECT/Input/odm.img.raw | awk '{print $1}')
+PRODUCT_SIZE=$(du -b ./Projects/$PROJECT/Input/product.img | awk '{print $1}')
+VENDOR_SIZE=$(du -b ./Projects/$PROJECT/Input/vendor.img | awk '{print $1}')
+ODM_SIZE=$(du -b ./Projects/$PROJECT/Input/odm.img | awk '{print $1}')
 BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img | grep "Block size:" | awk '{print $3}')
 
 CALCULATED_SYSTEM_SIZE=$(echo "($SYSTEM_SIZE / $BLOCK_SIZE) + 41984" | bc)

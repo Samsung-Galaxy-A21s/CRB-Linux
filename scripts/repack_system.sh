@@ -10,7 +10,7 @@ else
 fi
 
 SYSTEM_SIZE=$(sudo du -b ./Projects/$PROJECT/Build/system | tail -n 1 | awk '{print $1}')
-BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img.raw | grep "Block size:" | awk '{print $3}')
+BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img | grep "Block size:" | awk '{print $3}')
 
 CALCULATED_SYSTEM_SIZE=$(echo "($SYSTEM_SIZE / $BLOCK_SIZE) + 41984" | bc)
 
@@ -23,7 +23,6 @@ sudo mkfs.ext4 ./Projects/$PROJECT//Output/system.img
 sudo mount ./Projects/$PROJECT//Output/system.img /media/system/
 sudo cp ./Projects/$PROJECT//Build/system/* -r /media/system/
 sudo umount /media/system/
-img2simg ./Projects/$PROJECT//Output/system.img ./Projects/$PROJECT//Output/system.img
 
 
 echo "Check Projects/$PROJECT/Output for system.img"
