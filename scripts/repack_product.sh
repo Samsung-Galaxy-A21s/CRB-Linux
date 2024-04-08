@@ -9,14 +9,22 @@ else
     exit 0
 fi
 
+PRODUCT_SIZE=$(du -b ./Projects/$PROJECT/Input/product.img.raw | awk '{print $1}')
+BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img | grep "Block size:" | awk '{print $3}')
+
+CALCULATED_PRODUCT_SIZE=$(echo "($PRODUCT_SIZE / $BLOCK_SIZE) + 13056" | bc)
+
 echo "Building Product Image..."
 sudo rm -rf /media/product/
 sudo mkdir /media/product/
-dd if=/dev/zero of=./Projects/$PROJECT/Output/product.img bs=4096 count=278141
-sudo mkfs.ext4 ./Projects/$PROJECT/Output/product.img
-sudo mount ./Projects/$PROJECT/Output/product.img /media/product/
+sudo rm -rf ./Projects/$PROJECT/Output/product.img
+dd if=/dev/zero of=./Projects/$PROJECT/Output/product.img.raw bs=$BLOCK_SIZE count=$CALCULATED_PRODUCT_SIZE
+sudo mkfs.ext4 ./Projects/$PROJECT/Output/product.img.raw
+sudo mount ./Projects/$PROJECT/Output/product.img.raw /media/product/
 sudo cp ./Projects/$PROJECT/Build/product/* -r /media/product/
 sudo umount /media/product/
+img2simg ./Projects/$PROJECT/Output/product.img.raw ./Projects/$PROJECT/Output/product.img
+rm ./Projects/$PROJECT/Output/product.img.raw
 
 echo "Check Projects/$PROJECT/Output for product.img"
 echo "Done!"
