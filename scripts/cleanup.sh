@@ -22,12 +22,12 @@ if [ "$choice" == "ALL" ]; then
     echo "Deleting..."
 
     # Un mount mounted partitions
-    sudo umount Projects/*/Build/system
-    sudo umount Projects/*/Build/product
-    sudo umount Projects/*/Build/vendor
-    sudo umount Projects/*/Build/odm
-    sudo umount Projects/*/Build/prism
-    sudo umount Projects/*/Build/optics
+    sudo umount Projects/*/Build/system > /dev/null 2>&1
+    sudo umount Projects/*/Build/product > /dev/null 2>&1
+    sudo umount Projects/*/Build/vendor > /dev/null 2>&1
+    sudo umount Projects/*/Build/odm > /dev/null 2>&1
+    sudo umount Projects/*/Build/prism > /dev/null 2>&1
+    sudo umount Projects/*/Build/optics > /dev/null 2>&1
 
     sudo rm -rf Projects/*
     > tools/project
@@ -35,12 +35,12 @@ else
     echo "Deleting..."
 
     # Un mount mounted partitions
-    sudo umount Projects/$choice/Build/system
-    sudo umount Projects/$choice/Build/product
-    sudo umount Projects/$choice/Build/vendor
-    sudo umount Projects/$choice/Build/odm
-    sudo umount Projects/$choice/Build/prism
-    sudo umount Projects/$choice/Build/optics
+    sudo umount Projects/$choice/Build/system > /dev/null 2>&1
+    sudo umount Projects/$choice/Build/product > /dev/null 2>&1
+    sudo umount Projects/$choice/Build/vendor > /dev/null 2>&1
+    sudo umount Projects/$choice/Build/odm > /dev/null 2>&1
+    sudo umount Projects/$choice/Build/prism > /dev/null 2>&1
+    sudo umount Projects/$choice/Build/optics > /dev/null 2>&1
 
     sudo rm -rf "Projects/$choice"
 fi

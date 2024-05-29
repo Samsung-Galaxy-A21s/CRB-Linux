@@ -81,9 +81,14 @@ PRINT()
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-	echo -e "11) Disable vbmeta"
-	echo -e "12) Debloater Tool"
-    echo -e "13) Exit this menu"
+	echo -e "11) Mount partitions"
+	echo -e "12) Un-Mount partitions"
+	echo -e "13) Disable vbmeta"
+	echo -e "14) Debloater Tool"
+	echo -e ""
+
+	echo -e "${BOLD_RED}**QUIT**${RESET}"
+    echo -e "15) Exit this menu"
 	echo -e ""
 }
 
@@ -139,13 +144,21 @@ MAIN()
 				;;
 			11)
 				CHECK_PROJECT_EXISTS
-				bash scripts/disable_vbmeta.sh
+				bash scripts/mount.sh
 				;;
 			12)
 				CHECK_PROJECT_EXISTS
-				bash scripts/debloat_tool.sh
+				bash scripts/unmount.sh
 				;;
 			13)
+				CHECK_PROJECT_EXISTS
+				bash scripts/disable_vbmeta.sh
+				;;
+			14)
+				CHECK_PROJECT_EXISTS
+				bash scripts/debloat_tool.sh
+				;;
+			15)
 				echo "Exiting..."
 				exit 0
 				;;
