@@ -26,6 +26,8 @@ if [ "$choice" == "ALL" ]; then
     sudo umount Projects/*/Build/product
     sudo umount Projects/*/Build/vendor
     sudo umount Projects/*/Build/odm
+    sudo umount Projects/*/Build/prism
+    sudo umount Projects/*/Build/optics
 
     sudo rm -rf Projects/*
     > tools/project
@@ -37,6 +39,8 @@ else
     sudo umount Projects/$choice/Build/product
     sudo umount Projects/$choice/Build/vendor
     sudo umount Projects/$choice/Build/odm
+    sudo umount Projects/$choice/Build/prism
+    sudo umount Projects/$choice/Build/optics
 
     sudo rm -rf "Projects/$choice"
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Very first thing is to check this script is being run from 
+# Very first thing is to check this script is being run from
 # the correct directory. If not, then exit the script.
 if [ -e ./tools/checker ]; then
     :
@@ -45,6 +45,18 @@ fi
 export PROJECT=$CURRENT_PROJECT
 }
 
+CHECK_PROJECT_EXISTS()
+{
+
+if [ ! -s "tools/project" ]; then
+	echo ""
+	echo "[Error 1] No project selected!"
+	echo "exiting..."
+	exit 0
+fi
+
+}
+
 # Print the menu
 PRINT()
 {
@@ -57,18 +69,20 @@ PRINT()
 
 	echo -e "${BOLD_GREEN}**UNPACK IMAGE**${RESET}"
 	echo -e "4)  Unpack super.img"
-	echo -e "5)  Unpack boot.img"
+	echo -e "5)  Unpack prism.img"
+	echo -e "6)  Unpack optics.img"
+	echo -e "7)  Unpack boot.img"
 	echo -e ""
 
 	echo -e "${BOLD_YELLOW}**REPACK IMAGE**${RESET}"
-    echo -e "6) Repack super.img"
-    echo -e "7) Repack boot.img"
+    echo -e "8) Repack super.img"
+    echo -e "9) Repack boot.img"
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-	echo -e "8) Disable vbmeta"
-	echo -e "9) Debloater Tool"
-    echo -e "10) Exit this menu"
+	echo -e "10) Disable vbmeta"
+	echo -e "11) Debloater Tool"
+    echo -e "12) Exit this menu"
 	echo -e ""
 }
 
@@ -91,27 +105,42 @@ MAIN()
 				bash scripts/select_project.sh
 				;;
 			3)
+				CHECK_PROJECT_EXISTS
 				bash scripts/cleanup.sh
 				;;
 			4)
+				CHECK_PROJECT_EXISTS
 				bash scripts/unpack_super.sh
 				;;
 			5)
-				bash scripts/unpack_boot.sh
+				CHECK_PROJECT_EXISTS
+				bash scripts/unpack_prism.sh
 				;;
 			6)
-				bash scripts/repack_super.sh
+				CHECK_PROJECT_EXISTS
+				bash scripts/unpack_optics.sh
 				;;
 			7)
-				bash scripts/repack_boot.sh
+				CHECK_PROJECT_EXISTS
+				bash scripts/unpack_boot.sh
 				;;
 			8)
-				bash scripts/disable_vbmeta.sh
+				CHECK_PROJECT_EXISTS
+				bash scripts/repack_super.sh
 				;;
 			9)
-				bash scripts/debloat_tool.sh
+				CHECK_PROJECT_EXISTS
+				bash scripts/repack_boot.sh
 				;;
 			10)
+				CHECK_PROJECT_EXISTS
+				bash scripts/disable_vbmeta.sh
+				;;
+			11)
+				CHECK_PROJECT_EXISTS
+				bash scripts/debloat_tool.sh
+				;;
+			12)
 				echo "Exiting..."
 				exit 0
 				;;

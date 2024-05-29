@@ -11,10 +11,7 @@ if [ -e "$super_img_path/super.img" ]; then
     echo "Super.img located!"
     echo "Copying to CRB..."
     cp -f $super_img_path/super.img ./Projects/$PROJECT/Input/
-
-    echo "Block size is $BLOCK_SIZE"
-    echo "Size of super.img is $SUPER_SIZE"
-
+    
     echo ""
     echo "Extracting Dynamic Partitions..."
     cd Projects/$PROJECT/Input/
