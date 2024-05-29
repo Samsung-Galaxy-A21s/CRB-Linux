@@ -20,10 +20,24 @@ read -p "CHOICE: " choice
 
 if [ "$choice" == "ALL" ]; then
     echo "Deleting..."
+
+    # Un mount mounted partitions
+    sudo umount Projects/*/Build/system
+    sudo umount Projects/*/Build/product
+    sudo umount Projects/*/Build/vendor
+    sudo umount Projects/*/Build/odm
+
     sudo rm -rf Projects/*
     > tools/project
 else
     echo "Deleting..."
+
+    # Un mount mounted partitions
+    sudo umount Projects/$choice/Build/system
+    sudo umount Projects/$choice/Build/product
+    sudo umount Projects/$choice/Build/vendor
+    sudo umount Projects/$choice/Build/odm
+
     sudo rm -rf "Projects/$choice"
 fi
 

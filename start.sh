@@ -49,30 +49,26 @@ export PROJECT=$CURRENT_PROJECT
 PRINT()
 {
 	echo -e "                                                 ${BOLD_BLUE}${UNDERLINE}Welcome To CRB-Linux Kitchen - By RiskyGUY22${RESET}${RESET}"
-    echo -e "${BOLD_RED}**PROJECT MANAGEMENT**${RESET}                                    ${BOLD}${PINK}${UNDERLINE}Selected Project: $CURRENT_PROJECT${RESET}${RESET}${RESET}"
-    echo -e "1)  New Project"
+	echo -e "${BOLD_RED}**PROJECT MANAGEMENT**${RESET}                                    ${BOLD}${PINK}${UNDERLINE}Selected Project: $CURRENT_PROJECT${RESET}${RESET}${RESET}"
+	echo -e "1)  New Project"
 	echo -e "2)  Select Project"
-    echo -e "3)  Delete Projects"
+	echo -e "3)  Delete Projects"
 	echo -e ""
 
-    echo -e "${BOLD_GREEN}**UNPACK IMAGE**${RESET}"
-    echo -e "4)  Unpack super.img"
-    echo -e "5)  Unpack boot.img"
+	echo -e "${BOLD_GREEN}**UNPACK IMAGE**${RESET}"
+	echo -e "4)  Unpack super.img"
+	echo -e "5)  Unpack boot.img"
 	echo -e ""
 
-    echo -e "${BOLD_YELLOW}**REPACK IMAGE**${RESET}"
-    echo -e "6)  Repack system.img"
-    echo -e "7)  Repack product.img"
-    echo -e "8)  Repack vendor.img"
-    echo -e "9)  Repack odm.img"
-    echo -e "10) Repack super.img"
-    echo -e "11) Repack boot.img"
+	echo -e "${BOLD_YELLOW}**REPACK IMAGE**${RESET}"
+    echo -e "6) Repack super.img"
+    echo -e "7) Repack boot.img"
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-	echo -e "12) Disable vbmeta"
-	echo -e "13) Debloater Tool"
-    echo -e "14) Exit this menu"
+	echo -e "8) Disable vbmeta"
+	echo -e "9) Debloater Tool"
+    echo -e "10) Exit this menu"
 	echo -e ""
 }
 
@@ -104,30 +100,18 @@ MAIN()
 				bash scripts/unpack_boot.sh
 				;;
 			6)
-				bash scripts/repack_system.sh
-				;;
-			7)
-				bash scripts/repack_product.sh
-				;;
-			8)
-				bash scripts/repack_vendor.sh
-				;;
-			9)
-				bash scripts/repack_odm.sh
-				;;
-			10)
 				bash scripts/repack_super.sh
 				;;
-			11)
+			7)
 				bash scripts/repack_boot.sh
 				;;
-			12)
+			8)
 				bash scripts/disable_vbmeta.sh
 				;;
-			13)
+			9)
 				bash scripts/debloat_tool.sh
 				;;
-			14)
+			10)
 				echo "Exiting..."
 				exit 0
 				;;

@@ -18,17 +18,38 @@ if [ -e "$super_img_path/super.img" ]; then
     echo ""
     echo "Extracting Dynamic Partitions..."
     cd Projects/$PROJECT/Input/
-    simg2img super.img super.img.raw
-    echo "Extracting system image..."
-    ./../../../tools/super_to_raw/lpunpack --partition=system super.img.raw
-    echo "Extracting product image..."
-    ./../../../tools/super_to_raw/lpunpack --partition=product super.img.raw
-    echo "Extracting vendor image..."
-    ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img.raw
-    echo "Extracting odm image..."
-    ./../../../tools/super_to_raw/lpunpack --partition=odm super.img.raw
-    echo ""
 
+    FILE_TYPE=$(file super.img)
+
+    # Check if the file is sparse
+    if echo "$FILE_TYPE" | grep -q "Android sparse image"; then
+        echo "Sparse image detected!"
+
+        # Convert sparse image to raw image
+        simg2img super.img super.img.raw
+
+        echo "Extracting system image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=system super.img.raw
+        echo "Extracting product image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=product super.img.raw
+        echo "Extracting vendor image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img.raw
+        echo "Extracting odm image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=odm super.img.raw
+        echo ""
+    else
+        echo "Raw image detected!"
+
+        echo "Extracting system image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=system super.img
+        echo "Extracting product image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=product super.img
+        echo "Extracting vendor image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img
+        echo "Extracting odm image..."
+        ./../../../tools/super_to_raw/lpunpack --partition=odm super.img
+        echo ""
+    fi
 
     cd ..
     mkdir -p ./Build/system/
@@ -36,32 +57,24 @@ if [ -e "$super_img_path/super.img" ]; then
     mkdir -p ./Build/vendor/
     mkdir -p ./Build/odm/
 
-    mkdir -p ./Build/.tmp_system/
-    mkdir -p ./Build/.tmp_product/
-    mkdir -p ./Build/.tmp_vendor/
-    mkdir -p ./Build/.tmp_odm/
-
+    mv Input/system.img Output/
+    mv Input/product.img Output/
+    mv Input/vendor.img Output/
+    mv Input/odm.img Output/
 
     echo "Extracting system filesystem..."
-    sudo mount -t ext4 -o loop Input/system.img Build/.tmp_system/
-    sudo cp -f Build/.tmp_system/* Build/system/ -r
-    sudo umount Build/.tmp_system/
-    sudo rm -rf Build/.tmp_system/
+    sudo mount -t ext4 -o loop Output/system.img Build/system/
+
     echo "Extracting product filesystem..."
-    sudo mount -t ext4 -o loop Input/product.img Build/.tmp_product/
-    sudo cp -f Build/.tmp_product/* Build/product/ -r
-    sudo umount Build/.tmp_product/
-    sudo rm -rf Build/.tmp_product/
+    sudo mount -t ext4 -o loop Output/product.img Build/product/
+
     echo "Extracting vendor filesystem..."
-    sudo mount -t ext4 -o loop Input/vendor.img Build/.tmp_vendor/
-    sudo cp -f Build/.tmp_vendor/* Build/vendor/ -r
-    sudo umount Build/.tmp_vendor/
-    sudo rm -rf Build/.tmp_vendor/
+    sudo mount -t ext4 -o loop Output/vendor.img Build/vendor/
+
     echo "Extracting odm filesystem..."
-    sudo mount -t ext4 -o loop Input/odm.img Build/.tmp_odm/
-    sudo cp -f Build/.tmp_odm/* Build/odm/ -r
-    sudo umount Build/.tmp_odm/
-    sudo rm -rf Build/.tmp_odm/
+    sudo mount -t ext4 -o loop Output/odm.img Build/odm/
+
+
 
     echo ""
     echo "Done!"
