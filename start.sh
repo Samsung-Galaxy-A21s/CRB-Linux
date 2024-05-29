@@ -75,14 +75,15 @@ PRINT()
 	echo -e ""
 
 	echo -e "${BOLD_YELLOW}**REPACK IMAGE**${RESET}"
-    echo -e "8) Repack super.img"
-    echo -e "9) Repack boot.img"
+    echo -e "8)  Repack super.img"
+    echo -e "9)  Repack boot.img"
+	echo -e "10) Package ROM"
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-	echo -e "10) Disable vbmeta"
-	echo -e "11) Debloater Tool"
-    echo -e "12) Exit this menu"
+	echo -e "11) Disable vbmeta"
+	echo -e "12) Debloater Tool"
+    echo -e "13) Exit this menu"
 	echo -e ""
 }
 
@@ -134,13 +135,17 @@ MAIN()
 				;;
 			10)
 				CHECK_PROJECT_EXISTS
-				bash scripts/disable_vbmeta.sh
+				bash scripts/package_rom.sh
 				;;
 			11)
 				CHECK_PROJECT_EXISTS
-				bash scripts/debloat_tool.sh
+				bash scripts/disable_vbmeta.sh
 				;;
 			12)
+				CHECK_PROJECT_EXISTS
+				bash scripts/debloat_tool.sh
+				;;
+			13)
 				echo "Exiting..."
 				exit 0
 				;;

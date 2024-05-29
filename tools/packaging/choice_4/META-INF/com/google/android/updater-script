@@ -1,0 +1,40 @@
+#-----------Dynamic Installer Configs-----------#
+#The #MAGISK tag is required, dont remove it
+#MAGISK
+setdefault magisk_support on
+setdefault ensure_root on
+setdefault import_addons off
+setdefault apex_mount off
+setdefault extraction_speed default
+setdefault permissions "0:0:0755:0644"
+setdefault devices off
+#-----------------------------------------------#
+#Your script starts here:
+
+ui_print "                                       "
+ui_print "#######################################"
+ui_print "      Universal Packaging for CRB           "
+ui_print "#######################################"
+ui_print "                                         "
+ui_print "CRB Version: Stable                    "
+ui_print "CRB Developer: @thomas_turner36          "
+ui_print "File(s): prism.img, optics.img"
+ui_print " "
+ui_print "Unmounting all partitions..."
+ui_print " "
+umount_all
+
+ui_print "Installing prism image..."
+ui_print " "
+
+# Install prism.img
+update_zip prism.img "$(find_block prism)"
+
+ui_print " "
+ui_print "Installing optics image..."
+ui_print " "
+update_zip optics.img "$(find_block optics)"
+
+
+ui_print " DONE              "
+ui_print " "
