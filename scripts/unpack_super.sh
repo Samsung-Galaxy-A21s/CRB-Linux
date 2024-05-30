@@ -37,14 +37,16 @@ if [ -e "$super_img_path/super.img" ]; then
     else
         echo "Raw image detected!"
 
+        mv super.img super.img.raw
+
         echo "Extracting system image..."
-        ./../../../tools/super_to_raw/lpunpack --partition=system super.img
+        ./../../../tools/super_to_raw/lpunpack --partition=system super.img.raw
         echo "Extracting product image..."
-        ./../../../tools/super_to_raw/lpunpack --partition=product super.img
+        ./../../../tools/super_to_raw/lpunpack --partition=product super.img.raw
         echo "Extracting vendor image..."
-        ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img
+        ./../../../tools/super_to_raw/lpunpack --partition=vendor super.img.raw
         echo "Extracting odm image..."
-        ./../../../tools/super_to_raw/lpunpack --partition=odm super.img
+        ./../../../tools/super_to_raw/lpunpack --partition=odm super.img.raw
         echo ""
     fi
 

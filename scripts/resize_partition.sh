@@ -2,6 +2,22 @@
 
 # Script to resize a partition
 
+BOLD_GREEN='\033[1;32m'
+BOLD_RED='\033[1;31m'
+BOLD_RED='\033[1;31m'
+BOLD='\033[1m'
+RESET='\033[0m' # Reset color
+
+echo ""
+if [ -e "./Projects/$PROJECT/Input/super.img.raw" ]; then
+    :
+else
+    echo "[Error 1] Image Data NOT Located!"
+    echo "Make sure you have unpacked a super.img first!"
+    sleep 2
+    exit 0
+fi
+
 SYSTEM_SIZE=$(du -b ./Projects/$PROJECT/Output/system.img | awk '{print $1}')
 PRODUCT_SIZE=$(du -b ./Projects/$PROJECT/Output/product.img | awk '{print $1}')
 VENDOR_SIZE=$(du -b ./Projects/$PROJECT/Output/vendor.img | awk '{print $1}')
@@ -10,14 +26,13 @@ ODM_SIZE=$(du -b ./Projects/$PROJECT/Output/odm.img | awk '{print $1}')
 TOTAL_SIZE=$(echo "$SYSTEM_SIZE + $PRODUCT_SIZE + $VENDOR_SIZE + $ODM_SIZE" | bc)
 SUPER_SIZE=$(du -b ./Projects/$PROJECT/Input/super.img.raw | awk '{print $1}')
 
-echo ""
-echo "Partions:
-    1. system
+echo -e "Partions:
+    ${BOLD_GREEN}1. system
     2. vendor
     3. product
     4. odm
     5. prism
-    6. optics
+    6. optics${RESET}
     "
 read -p "Which partition would you like to resize?: " PARTITION
 
@@ -70,7 +85,9 @@ elif [ $PARTITION == 6 ]; then
         exit 0
     fi
 else
-    echo "Invalid option!"
+    echo ""
+    echo "[Error 1] Invalid option!"
+    sleep 1.5
     exit 1
 fi
 
@@ -81,7 +98,9 @@ if [ $((TOTAL_SIZE + (INCREASE_SIZE_MB * 1024 * 1024))) -gt $SUPER_SIZE ]; then
     sleep 3
     exit 1
 else
-    echo "Increasing partition by $INCREASE_SIZE_MB MB"
+    echo ""
+    echo "Increasing partition by $INCREASE_SIZE_MB MB..."
+    echo ""
 fi
 
 # Unmount all partitions

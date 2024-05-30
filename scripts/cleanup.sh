@@ -5,16 +5,20 @@ BOLD_GREEN='\033[1;32m'
 BOLD_RED='\033[1;31m'
 BOLD_RED='\033[1;31m'
 BOLD='\033[1m'
+RESET='\033[0m' # Reset color
 
 # List projects to delete from
 echo -e "${BOLD}Projects:${RESET}"
+echo ""
 ls -d Projects/* | grep -v "/$PROJECT" | cut -d '/' -f 2
 if [ $PROJECT == "None" ]; then
     :
 else
     echo -e "${BOLD_GREEN}$PROJECT << Current Project${RESET}"
 fi
+echo ""
 echo -e "${BOLD_RED}ALL << Delete All Projects${RESET}"
+echo ""
 
 read -p "CHOICE: " choice
 
@@ -32,6 +36,15 @@ if [ "$choice" == "ALL" ]; then
     sudo rm -rf Projects/*
     > tools/project
 else
+
+    if [ -e "Projects/$choice" ]; then
+        :
+    else
+        echo "[Error 1] Invalid Project name specified!"
+        sleep 2
+        exit 0
+    fi
+
     echo "Deleting..."
 
     # Un mount mounted partitions

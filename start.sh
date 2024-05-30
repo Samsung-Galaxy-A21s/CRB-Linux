@@ -170,7 +170,9 @@ MAIN()
 				exit 0
 				;;
 			*)
+				echo ""
 				echo "[Error 1] Invalid option!"
+				sleep 1.5
 				;;
 
 		esac

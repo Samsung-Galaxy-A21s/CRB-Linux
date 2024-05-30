@@ -22,8 +22,10 @@ SUPER_EXISTS()
     if [ -e "./Projects/$PROJECT/Output/super.img" ]; then
         :
     else
+        echo ""
         echo "[Error 1] Super.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        sleep 2
         exit 0
     fi
 
@@ -35,8 +37,10 @@ BOOT_EXISTS()
     if [ -e "./Projects/$PROJECT/Output/boot.img" ]; then
         :
     else
+        echo ""
         echo "[Error 1] Boot.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        sleep 2
         exit 0
     fi
 }
@@ -47,8 +51,10 @@ PRISM_EXISTS()
     if [ -e "./Projects/$PROJECT/Output/prism.img" ]; then
         :
     else
+        echo ""
         echo "[Error 1] Prism.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        sleep 2
         exit 0
     fi
 }
@@ -59,8 +65,10 @@ OPTICS_EXISTS()
     if [ -e "./Projects/$PROJECT/Output/optics.img" ]; then
         :
     else
+        echo ""
         echo "[Error 1] Optics.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        sleep 2
         exit 0
     fi
 }
@@ -194,7 +202,9 @@ case $choice in
         PACKAGE_5
         ;;
     *)
-        echo "Invalid choice"
+        echo ""
+        echo "[Error 1] Invalid choice!"
+        sleep 1.5
         ;;
 
 

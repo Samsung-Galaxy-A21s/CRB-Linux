@@ -3,10 +3,13 @@
 
 # Check that the user has actually unpacked a super.img
 if [ -f "./Projects/$PROJECT/Output/system.img" ] && [ -f "./Projects/$PROJECT/Output/product.img" ] && [ -f "./Projects/$PROJECT/Output/vendor.img" ] && [ -f "./Projects/$PROJECT/Output/odm.img" ]; then
+    echo ""
     echo "Super.img data detected!"
 else
+    echo ""
     echo "Super.img data NOT DETECTED!"
-    echo "Please rebuild all images first!"
+    echo "Please Unpack a super.img first!"
+    echo "*hint* Also check the partitions are mounted!"
     sleep 2
     exit 0
 fi
@@ -18,7 +21,8 @@ echo ""
 echo "Cleaning any old builds..."
 rm -rf ./Projects/$PROJECT/Output/super.img
 
-echo "Unmounting partitions"
+echo "Unmounting partitions..."
+echo ""
 
 # Un mount mounted partitions
 sudo umount Projects/$PROJECT/Build/system > /dev/null 2>&1
@@ -67,9 +71,19 @@ _OUTPUT=./Projects/$PROJECT/Output
     --image odm=$_OUTPUT/odm.img \
     --output $_OUTPUT/super.img
 
-echo ""
+# Check if the command succeeded
+if [ $? -eq 0 ]; then
+    
+    echo ""
+    echo "Check Projects/$PROJECT/Output for super.img"
+    echo "Done!"
 
-echo "Check Projects/$PROJECT/Output for super.img"
-echo "Done!"
+    sleep 1
+else
+    echo ""
+    echo "[Error 1] Super.img failed to build!"
+    echo "If it is failing at this stage, it is likely some of the Images,
+          don't fit into the super partition, as so please raise an issue on github!"
+    sleep 1
+fi
 
-sleep 1

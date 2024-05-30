@@ -7,6 +7,9 @@ echo ""
 
 if [ -e "$optics_img_path/optics.img" ]; then
 
+    sudo umount ./Projects/$PROJECT/Build/optics/ > /dev/null 2>&1
+    rm -rf ./Projects/$PROJECT/Output/optics.img
+
     mkdir -p ./Projects/$PROJECT/Build/optics/
 
     echo "optics.img located!"
@@ -19,6 +22,7 @@ if [ -e "$optics_img_path/optics.img" ]; then
     if echo "$FILE_TYPE" | grep -q "Android sparse image"; then
 
         echo "Android sparse image detected! Converting to raw image..."
+        echo ""
 
         simg2img ./Projects/$PROJECT/Input/optics.img ./Projects/$PROJECT/Output/optics.img
 
@@ -27,6 +31,7 @@ if [ -e "$optics_img_path/optics.img" ]; then
 
         echo "Done, any changed made to the optics filesystem will be reflected in the optics.img file,
         located at ./Projects/$PROJECT/Output/optics.img"
+        sleep 1.5
 
     else
         echo "Raw image detected! Moving to CRB..."
@@ -37,7 +42,10 @@ if [ -e "$optics_img_path/optics.img" ]; then
 
         echo "Done, any changed made to the prism filesystem will be reflected in the prism.img file,
         located at ./Projects/$PROJECT/Output/prism.img"
+        sleep 1.5
 
     fi
-
+else
+    echo "[Error 1] optics.img not found at specified path!"
+    sleep 1
 fi

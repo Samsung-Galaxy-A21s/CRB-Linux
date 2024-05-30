@@ -25,6 +25,7 @@ if [ -e $image/vbmeta.img ]; then
     echo ""
 else
     echo ""
-    echo "vbmeta.img not found!"
+    echo "[Error 1] vbmeta.img not found!"
+    echo "Check it is formated correctly and try again."
     echo ""
 fi
