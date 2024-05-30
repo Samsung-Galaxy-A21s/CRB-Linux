@@ -24,6 +24,7 @@ SUPER_EXISTS()
     else
         echo "[Error 1] Super.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        exit 0
     fi
 
 }
@@ -36,6 +37,7 @@ BOOT_EXISTS()
     else
         echo "[Error 1] Boot.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        exit 0
     fi
 }
 
@@ -47,6 +49,7 @@ PRISM_EXISTS()
     else
         echo "[Error 1] Prism.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        exit 0
     fi
 }
 
@@ -58,6 +61,7 @@ OPTICS_EXISTS()
     else
         echo "[Error 1] Optics.img not located in default directory!"
         echo "Make sure you have rebuilt one first!"
+        exit 0
     fi
 }
 
