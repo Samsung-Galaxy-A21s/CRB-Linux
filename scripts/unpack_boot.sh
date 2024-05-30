@@ -26,9 +26,9 @@ if [ -e "$boot_img_path/boot.img" ]; then
 
 else
 
-    echo "Incorrect path specified!"
-    echo "Check a boot.img is present in the directory!"
-    echo "Check you didn't include a '/' at the end!"
+    echo -e "${BOLD_RED}[Error 1] Incorrect path specified!"
+    echo -e "Check a boot.img is present in the directory!"
+    echo -e "Check you didn't include a '/' at the end!${RESET}"
     sleep 2
     exit 0
 

@@ -46,6 +46,6 @@ if [ -e "$optics_img_path/optics.img" ]; then
 
     fi
 else
-    echo "[Error 1] optics.img not found at specified path!"
+    echo -e "${BOLD_RED}[Error 1] optics.img not found at specified path!${RESET}"
     sleep 1
 fi

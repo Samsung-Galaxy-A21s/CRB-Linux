@@ -5,8 +5,8 @@ if [ -e "./Projects/$PROJECT/Build/boot/boot.img" ]; then
 	echo "Boot.img Found!"
 else
 	echo ""
-	echo "[Error 1] Boot.img data NOT Found!"
-	echo "Check you have unpacked a boot image first!"
+	echo -e "${BOLD_RED}[Error 1] Boot.img data NOT Found!"
+	echo -e "Check you have unpacked a boot image first!${RESET}"
 	sleep 2
 	exit 0
 fi

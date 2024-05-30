@@ -1,24 +1,10 @@
 #!/bin/bash
 
-# Very first thing is to check this script is being run from
-# the correct directory. If not, then exit the script.
-if [ -e ./tools/checker ]; then
-    :
-else
-    echo "[Error 1] You are not in the correct directory!"
-    echo "Stopping program now!"
-    exit 0
-fi
-
-# Then we update the source if needed
-echo "Updating source if required..."
-git fetch && git pull > /dev/null 2>&1
-
 # Add formatting to the script
 BLACK='\033[0;30m'
 BOLD_BLACK='\033[1;30m'
 RED='\033[0;31m'
-BOLD_RED='\033[1;31m'
+export BOLD_RED='\033[1;31m'
 GREEN='\033[0;32m'
 BOLD_GREEN='\033[1;32m'
 YELLOW='\033[0;33m'
@@ -31,10 +17,24 @@ CYAN='\033[0;36m'
 BOLD_CYAN='\033[1;36m'
 WHITE='\033[0;37m'
 BOLD_WHITE='\033[1;37m'
-RESET='\033[0m' # Reset color
+export RESET='\033[0m' # Reset color
 BOLD='\033[1m'
 PINK='\033[38;5;206m'
 UNDERLINE='\033[4m'
+
+# Very first thing is to check this script is being run from
+# the correct directory. If not, then exit the script.
+if [ -e ./tools/checker ]; then
+    :
+else
+    echo -e "${BOLD_RED}[Error 1] You are not in the correct directory!"
+    echo "Stopping program now!${RESET}"
+    exit 0
+fi
+
+# Then we update the source if needed
+echo "Updating source if required..."
+git fetch && git pull > /dev/null 2>&1
 
 PROJECT()
 {
@@ -50,8 +50,8 @@ CHECK_PROJECT_EXISTS()
 
 if [ ! -s "tools/project" ]; then
 	echo ""
-	echo "[Error 1] No project selected!"
-	echo "exiting..."
+	echo -e "${BOLD_RED}[Error 1] No project selected!"
+	echo -e "exiting...${RESET}"
 	exit 0
 fi
 
@@ -171,7 +171,7 @@ MAIN()
 				;;
 			*)
 				echo ""
-				echo "[Error 1] Invalid option!"
+				echo -e "${BOLD_RED}[Error 1] Invalid option!${RESET}"
 				sleep 1.5
 				;;
 

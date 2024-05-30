@@ -6,7 +6,7 @@ read -p "Enter Project Name: " project_name
 echo ""
 
 if [ -e "./Projects/$project_name" ]; then
-    echo "[Error 1] $project_name already exists!"
+    echo -e "${BOLD_RED}[Error 1] $project_name already exists!${RESET}"
     sleep 2
     exit 0
 fi
@@ -26,7 +26,7 @@ if [ -e "./Projects/$project_name" ]; then
 else
     echo "  "
     # Ik this message is the last thing the user wants to see, but I DON'T CARE
-    echo "[Error 1] Something went wrong and the project was not created!"
+    echo -e "${BOLD_RED}[Error 1] Something went wrong and the project was not created!${RESET}"
     exit 0
 fi
 

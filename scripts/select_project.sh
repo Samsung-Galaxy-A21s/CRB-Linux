@@ -27,7 +27,7 @@ if [ -e "./Projects/$project_choice" ]; then
 	echo -e "Project ${BOLD_GREEN}'$project_choice'${RESET} selected!"
 else
 	echo ""
-	echo "[Error 1] Invalid Project name specified!"
+	echo -e "${BOLD_RED}[Error 1] Invalid Project name specified!${RESET}"
 	sleep 2
 	exit 0
 fi

@@ -40,7 +40,8 @@ else
     if [ -e "Projects/$choice" ]; then
         :
     else
-        echo "[Error 1] Invalid Project name specified!"
+        echo ""
+        echo -e "${BOLD_RED}[Error 1] Invalid Project name specified!${RESET}"
         sleep 2
         exit 0
     fi

@@ -23,7 +23,7 @@ SUPER_EXISTS()
         :
     else
         echo ""
-        echo "[Error 1] Super.img not located in default directory!"
+        echo -e "${BOLD_RED}[Error 1] Super.img not located in default directory!${RESET}"
         echo "Make sure you have rebuilt one first!"
         sleep 2
         exit 0
@@ -38,7 +38,7 @@ BOOT_EXISTS()
         :
     else
         echo ""
-        echo "[Error 1] Boot.img not located in default directory!"
+        echo -e "${BOLD_RED}[Error 1] Boot.img not located in default directory!$RESET"
         echo "Make sure you have rebuilt one first!"
         sleep 2
         exit 0
@@ -52,7 +52,7 @@ PRISM_EXISTS()
         :
     else
         echo ""
-        echo "[Error 1] Prism.img not located in default directory!"
+        echo -e "${BOLD_RED}[Error 1] Prism.img not located in default directory!${RESET}"
         echo "Make sure you have rebuilt one first!"
         sleep 2
         exit 0
@@ -66,7 +66,7 @@ OPTICS_EXISTS()
         :
     else
         echo ""
-        echo "[Error 1] Optics.img not located in default directory!"
+        echo -e "${BOLD_RED}[Error 1] Optics.img not located in default directory!${RESET}"
         echo "Make sure you have rebuilt one first!"
         sleep 2
         exit 0
@@ -203,7 +203,7 @@ case $choice in
         ;;
     *)
         echo ""
-        echo "[Error 1] Invalid choice!"
+        echo -e "${BOLD_RED}[Error 1] Invalid choice!${RESET}"
         sleep 1.5
         ;;
 

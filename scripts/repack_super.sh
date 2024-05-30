@@ -7,9 +7,9 @@ if [ -f "./Projects/$PROJECT/Output/system.img" ] && [ -f "./Projects/$PROJECT/O
     echo "Super.img data detected!"
 else
     echo ""
-    echo "Super.img data NOT DETECTED!"
-    echo "Please Unpack a super.img first!"
-    echo "*hint* Also check the partitions are mounted!"
+    echo -e "${BOLD_RED}[Error 1] Super.img data NOT DETECTED!"
+    echo -e "Please Unpack a super.img first!"
+    echo -e "*hint* Also check the partitions are mounted!${RESET}"
     sleep 2
     exit 0
 fi
@@ -81,9 +81,9 @@ if [ $? -eq 0 ]; then
     sleep 1
 else
     echo ""
-    echo "[Error 1] Super.img failed to build!"
-    echo "If it is failing at this stage, it is likely some of the Images,
-          don't fit into the super partition, as so please raise an issue on github!"
+    echo -e "${BOLD_RED}[Error 1] Super.img failed to build!"
+    echo -e "If it is failing at this stage, it is likely some of the Images,
+          don't fit into the super partition, as so please raise an issue on github!${RESET}"
     sleep 1
 fi
 

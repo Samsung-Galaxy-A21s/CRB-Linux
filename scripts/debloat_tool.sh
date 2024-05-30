@@ -22,9 +22,9 @@ if [ -e ./Projects/$PROJECT/Build/system/system ]; then
 
 else
     echo ""
-    echo "[Error 1] System folder Data not found!"
-    echo "Check you have unpacked a super.img first!"
-    echo "Check the partition is mounted!"
+    echo -e "${BOLD_RED}[Error 1] System folder Data not found!"
+    echo -e "Check you have unpacked a super.img first!"
+    echo -e "Check the partition is mounted!${RESET}"
     sleep 2
     echo ""
 fi

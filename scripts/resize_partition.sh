@@ -12,8 +12,8 @@ echo ""
 if [ -e "./Projects/$PROJECT/Input/super.img.raw" ]; then
     :
 else
-    echo "[Error 1] Image Data NOT Located!"
-    echo "Make sure you have unpacked a super.img first!"
+    echo -e "${BOLD_RED}[Error 1] Image Data NOT Located!"
+    echo "Make sure you have unpacked a super.img first!${RESET}"
     sleep 2
     exit 0
 fi
@@ -40,53 +40,53 @@ if [ $PARTITION == 1 ]; then
     if [ -e "./Projects/$PROJECT/Output/system.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/system.img"
     else
-        echo "[Error 1] System.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] System.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 elif [ $PARTITION == 2 ]; then
     if [ -e "./Projects/$PROJECT/Output/vendor.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/vendor.img"
     else
-        echo "[Error 1] Vendor.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] Vendor.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 elif [ $PARTITION == 3 ]; then
     if [ -e "./Projects/$PROJECT/Output/product.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/product.img"
     else
-        echo "[Error 1] Product.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] Product.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 elif [ $PARTITION == 4 ]; then
     if [ -e "./Projects/$PROJECT/Output/odm.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/odm.img"
     else
-        echo "[Error 1] Odm.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] Odm.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 elif [ $PARTITION == 5 ]; then
     if [ -e "./Projects/$PROJECT/Output/prism.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/prism.img"
     else
-        echo "[Error 1] Prism.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] Prism.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 elif [ $PARTITION == 6 ]; then
     if [ -e "./Projects/$PROJECT/Output/optics.img" ]; then
         IMAGE="./Projects/$PROJECT/Output/optics.img"
     else
-        echo "[Error 1] Optics.img not located in default directory!"
-        echo "Make sure you have rebuilt one first!"
+        echo -e "${BOLD_RED}[Error 1] Optics.img not located in default directory!"
+        echo -e "Make sure you have rebuilt one first!${RESET}"
         exit 0
     fi
 else
     echo ""
-    echo "[Error 1] Invalid option!"
+    echo -e "${BOLD_RED}[Error 1] Invalid option!${RESET}"
     sleep 1.5
     exit 1
 fi

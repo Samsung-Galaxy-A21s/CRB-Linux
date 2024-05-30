@@ -47,7 +47,7 @@ if [ -e "$prism_img_path/prism.img" ]; then
     fi
 
 else
-    echo "[Error 1] prism.img not found at specified path!"
+    echo -e "${BOLD_RED}[Error 1] prism.img not found at specified path!${RESET}"
     sleep 1
 
 fi

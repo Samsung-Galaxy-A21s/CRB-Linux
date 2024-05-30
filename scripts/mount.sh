@@ -12,7 +12,7 @@ echo ""
 
 sudo mount -t ext4 -o loop system.img ../Build/system/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount system.img"
+  echo -e "${BOLD_RED}Failed to mount system.img${RESET}"
   sleep 1
 else
   echo "Mounted system.img"
@@ -20,7 +20,7 @@ fi
 
 sudo mount -t ext4 -o loop product.img ../Build/product/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount product.img"
+  echo -e "${BOLD_RED}Failed to mount product.img${RESET}"
   sleep 1
 else
   echo "Mounted product.img"
@@ -28,7 +28,7 @@ fi
 
 sudo mount -t ext4 -o loop vendor.img ../Build/vendor/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount vendor.img"
+  echo -e "${BOLD_RED}Failed to mount vendor.img${RESET}"
   sleep 1
 else
   echo "Mounted vendor.img"
@@ -36,7 +36,7 @@ fi
 
 sudo mount -t ext4 -o loop odm.img ../Build/odm/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount odm.img"
+  echo -e "${BOLD_RED}Failed to mount odm.img${RESET}"
   sleep 1
 else
   echo "Mounted odm.img"
@@ -44,7 +44,7 @@ fi
 
 sudo mount -t ext4 -o loop prism.img ../Build/prism/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount prism.img"
+  echo -e "${BOLD_RED}Failed to mount prism.img${BOLD_RED}"
   sleep 1
 else
   echo "Mounted prism.img"
@@ -52,7 +52,7 @@ fi
 
 sudo mount -t ext4 -o loop optics.img ../Build/optics/ > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "Failed to mount optics.img"
+  echo -e "${BOLD_RED}Failed to mount optics.img${RESET}"
   sleep 1
 else
   echo "Mounted optics.img"
