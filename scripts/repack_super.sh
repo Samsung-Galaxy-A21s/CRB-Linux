@@ -35,7 +35,7 @@ SYSTEM_SIZE=$(du -b ./Projects/$PROJECT/Output/system.img | awk '{print $1}')
 PRODUCT_SIZE=$(du -b ./Projects/$PROJECT/Output/product.img | awk '{print $1}')
 VENDOR_SIZE=$(du -b ./Projects/$PROJECT/Output/vendor.img | awk '{print $1}')
 ODM_SIZE=$(du -b ./Projects/$PROJECT/Output/odm.img | awk '{print $1}')
-BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img | grep "Block size:" | awk '{print $3}')
+BLOCK_SIZE=$(stat -f ./Projects/$PROJECT/Input/super.img.raw | grep "Block size:" | awk '{print $3}')
 
 # Convert sizes to blocks
 CALCULATED_SYSTEM_SIZE=$(echo "($SYSTEM_SIZE / $BLOCK_SIZE)" | bc)
