@@ -71,27 +71,29 @@ PRINT()
 
 	echo -e "${BOLD_GREEN}**UNPACK IMAGE**${RESET}"
 	echo -e "4)  Unpack super.img"
-	echo -e "5)  Unpack prism.img"
-	echo -e "6)  Unpack optics.img"
-	echo -e "7)  Unpack boot.img"
+	echo -e "5)  Unpack AOSP ROM"
+	echo -e "6)  Unpack prism.img"
+	echo -e "7)  Unpack optics.img"
+	echo -e "8)  Unpack boot.img"
 	echo -e ""
 
 	echo -e "${BOLD_YELLOW}**REPACK IMAGE**${RESET}"
-    echo -e "8)  Repack super.img"
-    echo -e "9)  Repack boot.img"
-	echo -e "10) Package ROM"
+    echo -e "9)  Repack super.img"
+	echo -e "10) Repack AOSP ROM"
+    echo -e "11) Repack boot.img"
+	echo -e "12) Package ROM"
 	echo -e ""
 
 	echo -e "${BOLD_MAGENTA}**MISC**${RESET}"
-	echo -e "11) Mount partitions"
-	echo -e "12) Un-Mount partitions"
-	echo -e "13) Re-size partitions"
-	echo -e "14) Disable vbmeta"
-	echo -e "15) Debloater Tool"
+	echo -e "13) Mount partitions"
+	echo -e "14) Un-Mount partitions"
+	echo -e "15) Re-size partitions"
+	echo -e "16) Disable vbmeta"
+	echo -e "17) Debloater Tool"
 	echo -e ""
 
 	echo -e "${BOLD_RED}**QUIT**${RESET}"
-    echo -e "16) Exit this menu"
+    echo -e "18) Exit this menu"
 	echo -e ""
 }
 
@@ -123,49 +125,57 @@ MAIN()
 				;;
 			5)
 				CHECK_PROJECT_EXISTS
-				bash scripts/unpack_prism.sh
+				bash scripts/unpack_AOSP_ROM.sh
 				;;
 			6)
 				CHECK_PROJECT_EXISTS
-				bash scripts/unpack_optics.sh
+				bash scripts/unpack_prism.sh
 				;;
 			7)
 				CHECK_PROJECT_EXISTS
-				bash scripts/unpack_boot.sh
+				bash scripts/unpack_optics.sh
 				;;
 			8)
 				CHECK_PROJECT_EXISTS
-				bash scripts/repack_super.sh
+				bash scripts/unpack_boot.sh
 				;;
 			9)
 				CHECK_PROJECT_EXISTS
-				bash scripts/repack_boot.sh
+				bash scripts/repack_super.sh
 				;;
 			10)
 				CHECK_PROJECT_EXISTS
-				bash scripts/package_rom.sh
+				bash scripts/repack_AOSP_ROM.sh
 				;;
 			11)
 				CHECK_PROJECT_EXISTS
-				bash scripts/mount.sh
+				bash scripts/repack_boot.sh
 				;;
 			12)
 				CHECK_PROJECT_EXISTS
-				bash scripts/unmount.sh
+				bash scripts/package_rom.sh
 				;;
 			13)
 				CHECK_PROJECT_EXISTS
-				bash scripts/resize_partition.sh
+				bash scripts/mount.sh
 				;;
 			14)
 				CHECK_PROJECT_EXISTS
-				bash scripts/disable_vbmeta.sh
+				bash scripts/unmount.sh
 				;;
 			15)
 				CHECK_PROJECT_EXISTS
-				bash scripts/debloat_tool.sh
+				bash scripts/resize_partition.sh
 				;;
 			16)
+				CHECK_PROJECT_EXISTS
+				bash scripts/disable_vbmeta.sh
+				;;
+			17)
+				CHECK_PROJECT_EXISTS
+				bash scripts/debloat_tool.sh
+				;;
+			18)
 				echo "Exiting..."
 				exit 0
 				;;
